@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sabina Akram — Human-Centered AI Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{ --ink:#201c16; --muted:#6b6259; --accent:#1F3350; --accent2:#9c7a3c; --accent3:#2f8577; --line:#e6ddd0; --bg:#faf6ef; }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  html{scroll-behavior:smooth;}
+  body{ background:var(--bg); color:var(--ink); font-family:'Inter', sans-serif; font-size:16px; line-height:1.65; -webkit-font-smoothing:antialiased; }
+  h1,h2,h3{ font-family:'Source Serif 4', serif; font-weight:600; }
+  a{ color:var(--accent); text-decoration:none; border-bottom:1px solid transparent; }
+  button{ cursor:pointer; }
+  a:hover{ border-color:var(--accent); }
+  .wrap{ max-width:800px; margin:0 auto; padding:0 24px; }
+  .mono{ font-family:'IBM Plex Mono', monospace; }
+
+  .top-bar{ height:5px; background:linear-gradient(90deg, var(--accent), var(--accent3), var(--accent2)); }
+  header.masthead{ padding:56px 0 0; position:relative; }
+  header.masthead::before{ content:""; position:absolute; top:-40px; left:50%; transform:translateX(-50%); width:520px; height:280px; background:radial-gradient(circle, rgba(31,51,80,.10), rgba(47,133,119,.06) 55%, transparent 75%); z-index:-1; }
+  .masthead-inner{ display:flex; gap:18px; align-items:center; justify-content:center; text-align:center; flex-direction:column; flex-wrap:wrap; }
+  .avatar{ width:148px; height:148px; border-radius:50%; object-fit:cover; object-position:center 22%; flex-shrink:0; border:4px solid var(--accent2); box-shadow:0 16px 40px rgba(31,51,80,.18); }
+  .masthead-inner h1{ font-size:1.9rem; }
+  .role{ color:var(--accent2); font-size:0.98rem; margin-top:4px; font-style:italic; font-weight:500; }
+  .affil{ color:var(--muted); font-size:0.92rem; display:flex; gap:8px; justify-content:center; flex-wrap:wrap; margin-top:6px; }
+  .kw{ font-style:italic; color:var(--muted); font-size:0.86rem; }
+  .kw:not(:last-child)::after{ content:"·"; margin-left:8px; color:var(--line); font-style:normal; }
+  .contact-line{ margin-top:8px; font-size:0.88rem; color:var(--muted); font-family:'IBM Plex Mono', monospace; }
+  .contact-line a{ margin-right:2px; }
+  .icon-link{ display:inline-flex; align-items:center; justify-content:center; margin-right:14px; color:var(--muted); vertical-align:middle; }
+  .icon-link:hover{ color:var(--accent); }
+  .icon-link svg{ width:19px; height:19px; fill:currentColor; }
+  .foot-links .icon-link{ margin-right:18px; color:inherit; }
+  .cv-btn{ display:inline-block; margin-top:10px; font-size:0.82rem; padding:6px 14px; border:1px solid var(--accent); border-radius:5px; color:var(--accent); font-family:'IBM Plex Mono', monospace; }
+  .cv-btn:hover{ background:var(--accent); color:#fff; }
+  .floating-cv{ position:fixed; right:22px; bottom:22px; z-index:999; background:linear-gradient(135deg, var(--accent), var(--accent3)); color:#fff; padding:10px 16px; border-radius:999px; font-size:.78rem; box-shadow:0 10px 25px rgba(0,0,0,.18); border:none; }
+  .floating-cv:hover{ background:var(--accent2); color:#fff; border:none; }
+
+  nav.masthead-nav{ margin-top:30px; border-top:1px solid var(--line); border-bottom:2px solid var(--accent2); position:sticky; top:0; background:var(--bg); z-index:10; }
+  nav.masthead-nav .wrap{ display:flex; flex-wrap:wrap; gap:18px; padding:12px 24px; font-size:0.8rem; font-family:'IBM Plex Mono', monospace; }
+  nav.masthead-nav a{ color:var(--muted); border-bottom:1px solid transparent; }
+  nav.masthead-nav a:hover{ color:var(--accent3); border-color:var(--accent3); }
+
+  section{ padding:46px 0; border-bottom:1px solid var(--line); }
+  section h2{ font-size:1.2rem; margin-bottom:22px; color:var(--ink); border-bottom:2px solid var(--accent2); padding-bottom:10px; display:inline-block; }
+  #about h2, #experience h2, #projects h2, #service h2{ border-bottom-color:var(--accent3); }
+  .sec-sub{ font-size:0.86rem; color:var(--muted); margin:-14px 0 24px; max-width:60ch; }
+
+  .prose p{ margin-bottom:14px; max-width:64ch; }
+  .prose b{ font-weight:600; }
+
+  .entry{ padding-bottom:22px; margin-bottom:22px; border-bottom:1px solid var(--line); border-left:3px solid var(--accent3); padding-left:16px; }
+  .entry:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .entry-head{ display:flex; justify-content:space-between; align-items:baseline; gap:12px; flex-wrap:wrap; }
+  .entry-head h3{ font-size:1.02rem; }
+  .entry-date{ font-family:'IBM Plex Mono', monospace; font-size:0.78rem; color:var(--accent2); font-weight:600; }
+  .entry-org{ font-size:0.9rem; color:var(--muted); margin:2px 0 8px; }
+  .entry p{ font-size:0.94rem; max-width:64ch; }
+  .entry ul{ padding-left:18px; font-size:0.94rem; margin-top:4px; }
+  .entry li{ margin-bottom:3px; }
+  .entry-links{ margin-top:8px; font-size:0.8rem; font-family:'IBM Plex Mono', monospace; }
+  .entry-links a{ margin-right:14px; font-size:1.05rem; text-decoration:none; }
+
+  .pub{ display:flex; gap:16px; padding-bottom:18px; margin-bottom:18px; border-bottom:1px solid var(--line); }
+  .pub:last-child{ border-bottom:none; margin-bottom:0; padding-bottom:0; }
+  .pub-year{ font-family:'IBM Plex Mono', monospace; font-size:0.8rem; color:var(--accent2); font-weight:600; width:44px; flex-shrink:0; padding-top:2px; }
+  .pub-title{ font-size:0.96rem; font-weight:600; margin-bottom:2px; }
+  .pub-venue{ font-size:0.84rem; color:var(--muted); font-family:'IBM Plex Mono', monospace; }
+  .pub-venue a{ font-size:1.02rem; text-decoration:none; }
+
+  .proj-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .proj-card{ background:#fff; border:1px solid var(--line); border-top:3px solid var(--accent2); border-radius:10px; padding:22px; display:flex; flex-direction:column; gap:8px; }
+  .proj-tag{ font-family:'IBM Plex Mono', monospace; font-size:0.68rem; text-transform:uppercase; letter-spacing:0.07em; color:var(--accent2); font-weight:600; }
+  .proj-card h3{ font-size:1.03rem; }
+  .proj-card p{ font-size:0.89rem; color:var(--muted); }
+  .proj-links{ margin-top:2px; font-size:0.8rem; font-family:'IBM Plex Mono', monospace; }
+  .proj-links a{ margin-right:14px; font-size:1.05rem; text-decoration:none; }
+
+  .talk-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .talk-card{ background:#fff; border:1px solid var(--line); border-top:3px solid var(--accent3); border-radius:10px; padding:22px; display:flex; flex-direction:column; gap:5px; }
+  .talk-card h3{ font-size:1.0rem; }
+  .talk-meta{ font-family:'IBM Plex Mono', monospace; font-size:0.75rem; color:var(--accent2); font-weight:600; }
+  .talk-card .desc{ font-size:0.87rem; color:var(--muted); margin:2px 0 4px; }
+  .talk-links{ font-size:0.78rem; font-family:'IBM Plex Mono', monospace; }
+  .talk-links a{ margin-right:12px; font-size:1.05rem; text-decoration:none; }
+
+  footer{ padding:50px 0 70px; }
+  footer p{ font-size:0.92rem; color:var(--muted); margin-bottom:14px; max-width:56ch; }
+  .foot-links{ font-size:0.9rem; font-family:'IBM Plex Mono', monospace; }
+  .foot-links a{ margin-right:16px; }
+  .foot-note{ margin-top:30px; font-size:0.76rem; color:#9a9184; font-family:'IBM Plex Mono', monospace; }
+
+  /* PROTOTYPE / DEMO PANELS */
+  .demos-sub{ color:var(--muted); font-size:0.88rem; margin:-14px 0 24px; max-width:60ch; }
+  .demo{ background:radial-gradient(circle at 15% 0%, #1F3350, #0f1b2b); border-radius:14px; padding:24px; color:#dce6ee; margin-bottom:24px; }
+  .demo-tag{ font-family:'IBM Plex Mono',monospace; font-size:0.66rem; letter-spacing:.12em; text-transform:uppercase; color:#c9a668; }
+  .demo-title{ font-family:'Source Serif 4',serif; font-size:1.2rem; color:#fff; margin:6px 0 4px; }
+  .demo-desc{ font-size:0.84rem; color:#aec4d2; margin-bottom:18px; max-width:62ch; }
+  .demo-grid{ display:grid; grid-template-columns:1fr 1fr; gap:20px; }
+  .demo-box{ background:rgba(255,255,255,0.04); border:1px solid #2c3e56; border-radius:12px; padding:16px; }
+  .demo-lbl{ font-size:0.72rem; color:#9fb3c4; margin-bottom:7px; font-family:'IBM Plex Mono',monospace; }
+  .demo-chiprow{ display:flex; flex-wrap:wrap; gap:7px; margin-bottom:14px; }
+  .demo-chip{ font-family:'IBM Plex Mono',monospace; font-size:0.68rem; padding:5px 11px; border-radius:100px; border:1px solid #3a4f6a; color:#cfe0ec; background:transparent; cursor:pointer; }
+  .demo-chip:hover{ border-color:#c9a668; }
+  .demo-slider{ margin-bottom:12px; }
+  .demo-slider .r{ display:flex; justify-content:space-between; font-size:0.74rem; margin-bottom:3px; color:#cfe0ec; font-family:'IBM Plex Mono',monospace; }
+  .demo-val{ font-family:'IBM Plex Mono',monospace; color:#dcb977; }
+  .demo-slider input{ width:100%; accent-color:#c9a668; }
+  .ed-scorewrap{ display:flex; align-items:center; gap:16px; }
+  .ed-gauge{ position:relative; width:110px; height:110px; flex-shrink:0; }
+  .ed-gnum{ position:absolute; inset:0; display:flex; flex-direction:column; align-items:center; justify-content:center; }
+  .ed-gnum span{ font-size:1.6rem; font-weight:700; color:#fff; font-family:'IBM Plex Mono',monospace; }
+  .ed-gnum small{ font-size:0.56rem; color:#9fb3c4; font-family:'IBM Plex Mono',monospace; }
+  .ed-band{ font-weight:700; font-size:1.0rem; font-family:'Source Serif 4',serif; }
+  .ed-perf-lbl{ font-size:0.7rem; color:#9fb3c4; margin-top:8px; font-family:'IBM Plex Mono',monospace; }
+  .ed-perfbar{ height:8px; background:#31415a; border-radius:100px; overflow:hidden; margin:5px 0 3px; width:150px; }
+  .ed-perfbar div{ height:100%; background:#c9a668; transition:width .4s; width:0; }
+  .demo-cardt{ font-size:0.78rem; color:#cfe0ec; font-weight:600; margin:14px 0 10px; font-family:'IBM Plex Mono',monospace; }
+  .ed-crow{ margin-bottom:9px; }
+  .ed-clbl{ display:flex; justify-content:space-between; font-size:0.7rem; margin-bottom:3px; font-family:'IBM Plex Mono',monospace; color:#cfe0ec; }
+  .ed-track{ position:relative; height:9px; background:rgba(255,255,255,0.06); border-radius:100px; }
+  .ed-mid{ position:absolute; left:50%; top:0; bottom:0; width:1px; background:#4a6076; }
+  .ed-fill{ position:absolute; top:0; height:9px; border-radius:100px; }
+  .ed-path{ display:flex; justify-content:space-between; font-size:0.7rem; margin-bottom:6px; color:#cfe0ec; font-family:'IBM Plex Mono',monospace; }
+  .ed-p{ font-family:'IBM Plex Mono',monospace; padding:1px 7px; border-radius:5px; background:rgba(255,255,255,0.06); color:#8fa3b5; }
+  .ed-p.sig{ color:#7fd9b6; background:rgba(127,217,182,0.12); }
+  .fm-frame{ width:270px; height:520px; background:#fff; border-radius:28px; box-shadow:0 20px 50px -20px rgba(0,0,0,0.6); border:7px solid #0d1826; overflow:hidden; display:flex; flex-direction:column; margin:0 auto; }
+  .fm-status{ height:18px; background:#243b53; flex-shrink:0; }
+  .fm-body{ flex:1; overflow-y:auto; background:#f8fafc; }
+  .fm-hero{ background:#243b53; color:#fff; padding:14px 16px 22px; border-radius:0 0 18px 18px; }
+  .fm-hero small{ color:#9fb3c8; font-size:10.5px; font-family:'IBM Plex Mono',monospace; }
+  .fm-hero h4{ font-size:14px; margin:2px 0 10px; }
+  .fm-search{ background:rgba(255,255,255,0.15); border-radius:9px; padding:7px 10px; font-size:11.5px; }
+  .fm-sec{ padding:13px; }
+  .fm-sec-t{ font-size:11.5px; font-weight:700; color:#334155; margin-bottom:8px; }
+  .fm-card{ background:#fff; border:1px solid #eef2f6; border-radius:11px; padding:9px 11px; margin-bottom:7px; box-shadow:0 1px 4px rgba(0,0,0,0.03); }
+  .fm-card p{ font-size:12px; font-weight:600; color:#1e293b; margin:0; }
+  .fm-card span{ font-size:10.5px; color:#64748b; }
+  .fm-mentor{ display:flex; align-items:center; gap:9px; }
+  .fm-avatar{ width:32px; height:32px; border-radius:50%; color:#fff; display:flex; align-items:center; justify-content:center; font-weight:700; font-size:12px; flex-shrink:0; }
+  .fm-tags{ display:flex; gap:5px; flex-wrap:wrap; margin:6px 0; }
+  .fm-tag{ font-size:9px; background:#f1f5f9; color:#475569; padding:2px 7px; border-radius:100px; }
+  .fm-btn{ width:100%; font-size:11.5px; padding:6px; border-radius:8px; background:#243b53; color:#fff; border:none; cursor:pointer; margin-top:4px; }
+  .fm-nav{ display:flex; border-top:1px solid #eef2f6; background:#fff; flex-shrink:0; }
+  .fm-navbtn{ flex:1; display:flex; flex-direction:column; align-items:center; gap:2px; padding:7px 0; font-size:9px; color:#94a3b8; background:none; border:none; cursor:pointer; }
+  .fm-navbtn.active{ color:#243b53; }
+  .fm-chatwrap{ display:flex; flex-direction:column; height:100%; }
+  .fm-chathead{ display:flex; align-items:center; gap:8px; padding:9px 11px; border-bottom:1px solid #eef2f6; background:#fff; }
+  .fm-chatbody{ flex:1; overflow-y:auto; padding:10px; display:flex; flex-direction:column; gap:6px; background:#f8fafc; }
+  .fm-bubble{ max-width:75%; padding:7px 11px; border-radius:14px; font-size:11.5px; }
+  .fm-bubble.me{ align-self:flex-end; background:#243b53; color:#fff; border-bottom-right-radius:4px; }
+  .fm-bubble.them{ align-self:flex-start; background:#fff; border:1px solid #eef2f6; color:#334155; border-bottom-left-radius:4px; }
+  .fm-inputrow{ display:flex; gap:6px; padding:8px; border-top:1px solid #eef2f6; background:#fff; }
+  .fm-inputrow input{ flex:1; border:none; background:#f1f5f9; border-radius:100px; padding:8px 12px; font-size:11.5px; outline:none; }
+  .fm-send{ width:30px; height:30px; border-radius:50%; background:#243b53; border:none; color:#fff; display:flex; align-items:center; justify-content:center; cursor:pointer; flex-shrink:0; font-size:13px; }
+  .fm-empty{ display:flex; flex-direction:column; align-items:center; justify-content:center; height:100%; color:#94a3b8; text-align:center; padding:20px; font-size:22px; }
+  .fm-hint{ text-align:center; font-size:10.5px; color:#9fb3c4; margin-top:10px; font-family:'IBM Plex Mono',monospace; }
+
+  @media (max-width:640px){
+    .masthead-inner{ flex-direction:column; align-items:center; }
+    .proj-grid, .talk-grid, .demo-grid{ grid-template-columns:1fr; }
+  }
+</style>
+</head>
+<body>
+<div class="top-bar"></div>
+
+<header class="masthead" id="top">
+  <div class="wrap masthead-inner">
+    <img class="avatar" src="https://dl.dropboxusercontent.com/scl/fi/ys71s6dyh4n0c1uy1u9ku/Screenshot_20251029_073728_Gallery.jpg?rlkey=zbdsrazevvi8u972vyyokxi3n&amp;st=t2uaj4zm&amp;dl=1" alt="Sabina Akram">
+    <div>
+      <h1>Sabina Akram</h1>
+      <p class="role">Human-Centered AI Researcher</p>
+      <p class="affil">
+        <span class="kw">Mixed-Methods HCI/UX</span>
+        <span class="kw">Conversational AI</span>
+        <span class="kw">Healthcare &amp; Educational Technologies</span>
+      </p>
+      <p class="contact-line">
+        <a class="icon-link" href="mailto:sabina.akram93@gmail.com" aria-label="Email" title="Email"><svg viewBox="0 0 24 24"><path d="M2 4h20v16H2V4zm2 2.4V6h.01L12 12l7.99-6H4v.4zM4 8.24V18h16V8.24l-7.4 5.55a1 1 0 01-1.2 0L4 8.24z"/></svg></a>
+        <a class="icon-link" href="https://www.linkedin.com/in/sabina-akram-4a81a82b5/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 11.02-4.14 2.07 2.07 0 01-.02 4.14zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+        <a class="icon-link" href="https://scholar.google.it/citations?user=oQLPmzQAAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 13.5L4.5 12.5V15.5c0 2.21 3.36 4 7.5 4s7.5-1.79 7.5-4v-3l-7.5 4z"/></svg></a>
+      </p>
+    </div>
+  </div>
+  <a class="cv-btn floating-cv" href="https://www.dropbox.com/scl/fi/iunfyuym7qgq5c319oc7s/Sabina_Akram_CV2026.pdf?rlkey=mj0akbofarl5u62cxw3u5yzgs&amp;st=3i12pxtq&amp;dl=0" target="_blank" rel="noopener">↓ CV</a>
+  <nav class="masthead-nav">
+    <div class="wrap">
+      <a href="#about">About</a>
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#publications">Publications</a>
+      <a href="#projects">Systems &amp; Demos</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </nav>
+</header>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="wrap">
+    <h2>About</h2>
+    <div class="prose">
+      <p>I am an early-career Human-Centered AI researcher working at the intersection of HCI, UX research, and responsible AI. My research examines how intelligent systems influence human interaction, decision-making, and technology adoption across recruitment, healthcare, and educational domains.</p>
+      <p>Using mixed-methods and interaction design approaches, I investigate transparency, usability, fairness, and human-AI collaboration in AI-mediated environments. I am particularly interested in conversational systems, explainable AI, and the design of socially responsible technologies that align technical innovation with human needs.</p>
+      <p>Through collaborations with academic and industry partners across Europe, I have contributed to projects on AI recruitment systems, healthcare decision-support technologies, and AI-enhanced learning environments, with research published in international HCI and Human-Centered AI venues.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="wrap">
+    <h2>Education</h2>
+    <div class="entry">
+      <div class="entry-head"><h3>PhD in Computer Science and Mathematics</h3><span class="entry-date">2022 – 2024 (defended 1 Jul 2025)</span></div>
+      <p class="entry-org">Università degli Studi di Bari Aldo Moro, Bari, Italy</p>
+      <p>Conducted interdisciplinary research on Human-Centered AI and conversational systems, exploring how intelligent technologies influence trust, transparency, fairness, and decision-making in recruitment and organizational environments. Developed and validated human-centered interaction frameworks through mixed-methods HCI research in collaboration with academic and industry partners.</p>
+      <div class="entry-links">
+        <a href="https://hdl.handle.net/11586/564880" target="_blank" rel="noopener" title="Doctoral thesis (full text)">📄</a>
+        <a href="https://www.dropbox.com/scl/fi/2qao6uqwavk0ii20aavn1/Sabina-Akram-final-defense-presentation.pptx?rlkey=hdm6qqlxkmovb9svc2dpuwwla&amp;st=dmpmvwrv&amp;dl=0" target="_blank" rel="noopener" title="Defense presentation (slides)">🖥️</a>
+        <a href="https://www.dropbox.com/scl/fi/3ftsq9ruxdidk3m4dmg2y/Sabina-PON-Poster_revised.docx?rlkey=c53n0g0znapr73qxvz1huinhu&amp;st=qakg8yp4&amp;dl=0" target="_blank" rel="noopener" title="Research poster (PON)">🖼️</a>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="entry-head"><h3>Master of Science in Computer Science</h3><span class="entry-date">2019 – 2021</span></div>
+      <p class="entry-org">FAST-NUCES, Islamabad, Pakistan</p>
+      <p>Focused on AI-driven predictive modeling, user behavior analysis, and technology acceptance research. Designed a hybrid SEM–Neural Network framework to investigate engagement, usability, and performance outcomes in intelligent e-learning environments using quantitative and data-driven methodologies.</p>
+      <div class="entry-links">
+        <a href="https://ideas.repec.org/a/abq/ijist1/v8y2026i3p232-257.html" target="_blank" rel="noopener" title="Related publication (IJIST, 2026)">📄</a>
+        <a href="https://www.dropbox.com/scl/fi/21bu47js59ih40hutztzj/Introduction-to-MS-HCAI-Research.pptx?rlkey=1h5qlhpa0bslo56mjppperx7t&amp;st=r5cf4iba&amp;dl=0" target="_blank" rel="noopener" title="Thesis defense (slides)">🖥️</a>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="entry-head"><h3>MSc-IT (Information Technology)</h3><span class="entry-date">2016 – 2018</span></div>
+      <p class="entry-org">Quaid-e-Azam University, Islamabad, Pakistan</p>
+      <p>Studied software engineering, databases, algorithms, and object-oriented system development, with emphasis on practical computing and interactive technologies. Developed a 3D Unity-based simulation project using C# and real-time rendering, focusing on interactive environments, user experience, and performance-aware application design.</p>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="wrap">
+    <h2>Experience</h2>
+    <div class="entry">
+      <div class="entry-head"><h3>Researcher — Human-Centered AI Systems</h3><span class="entry-date">Jan 2022 – Dec 2024</span></div>
+      <p class="entry-org">Università degli Studi di Bari Aldo Moro, Bari, Italy</p>
+      <ul>
+        <li>Designed RecoBot, a human-centered conversational recruitment system integrating explainability, transparency, and trust-calibration mechanisms.</li>
+        <li>Conducted empirical studies on conversational interaction design, user trust, and AI-mediated recruitment experiences.</li>
+        <li>Developed the Human-Centered Technology Acceptance Model (HC-TAM), extending TAM through fairness, personalization, transparency, and trust constructs.</li>
+        <li>Applied mixed-method research approaches including PLS-SEM, usability evaluation, interviews, and qualitative analysis.</li>
+        <li>Investigated human-AI decision-making and technology adoption across recruiter and job-seeker populations.</li>
+        <li>Collaborated with academic and industry partners on the design and evaluation of human-centered AI systems.</li>
+        <li>Published research contributions in international HCI, conversational AI, and Human-Centered AI venues.</li>
+      </ul>
+    </div>
+    <div class="entry">
+      <div class="entry-head"><h3>Human-Centered Interaction Designer</h3><span class="entry-date">Sep – Oct 2024</span></div>
+      <p class="entry-org">InContech, Pfungstadt, Germany · Marie Skłodowska-Curie Staff Exchange</p>
+      <p>My first PhD secondment: a short-term research period abroad contributing to GenDAI, an AI-supported genomic decision-support project. Examined usability, accessibility, and interaction-level transparency in clinical AI decision environments alongside healthcare professionals, developers, and academic partners from FTK, OKKAM, and Sapienza University.</p>
+      <div class="entry-links">
+        <a href="https://project-gendai.eu/imprint/" target="_blank" rel="noopener" title="GenDAI project (EU consortium)">🔗</a>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="entry-head"><h3>Research Intern, HCAI Conversational Designer</h3><span class="entry-date">Jan – Jun 2023</span></div>
+      <p class="entry-org">Experis Italia, Keiretsu Project, Bari, Italy</p>
+      <p>Introduced Human-Centered AI methods to the company's developer team and applied them within Keiretsu's recruitment module, designing RecoBot as a UX- and HCAI-grounded conversational AI for recruitment, and contributing to the empirical validation of HC-TAM.</p>
+      <div class="entry-links">
+        <a href="https://www.experis.it/it/insights/articoli/2022/keiretzu" target="_blank" rel="noopener" title="Keiretsu platform (Experis Italia)">🔗</a>
+      </div>
+    </div>
+    <div class="entry">
+      <div class="entry-head"><h3>Teaching Assistant</h3><span class="entry-date">Feb 2020 – Oct 2021</span></div>
+      <p class="entry-org">FAST-NUCES, Islamabad, Pakistan</p>
+      <p><b>Courses:</b> Human Computer Interaction (CS422) · User Experience Engineering (CS5107) · Advanced Analysis of Algorithms (CS501) · Theory of Programming Languages (CS507)</p>
+      <ul>
+        <li>Supported lab instruction, assignment evaluation, and student project mentoring across HCI, UX, and algorithms courses.</li>
+        <li>Guided coursework in user research, usability testing, prototyping, and interaction design critique.</li>
+      </ul>
+      <div class="entry-links">
+        <a href="https://www.dropbox.com/scl/fo/r5lwubgjahqiatcixxgi8/AAmsb76ZW9Xk6jCRnNChON4?rlkey=kbpax0glnatfap7le599p87ic&amp;st=2tobvmjk&amp;dl=0" target="_blank" rel="noopener" title="Teaching certification (FAST-NUCES)">📜</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="wrap">
+    <h2>Publications</h2>
+    <div class="pub"><div class="pub-year">2024</div><div><p class="pub-title">Recruitment chatbot acceptance in a company: a mixed method study on human-centered technology acceptance model</p><p class="pub-venue">Personal and Ubiquitous Computing · <a href="https://doi.org/10.1007/s00779-024-01826-4" target="_blank" rel="noopener" title="Full text (DOI)">📄</a></p></div></div>
+    <div class="pub"><div class="pub-year">2024</div><div><p class="pub-title">Human-Centric Interaction Design of RecoBot: A Study for Improved User Experience</p><p class="pub-venue">HCI International 2024 Posters, CCIS vol. 2120, Springer, pp. 155–165 · <a href="https://doi.org/10.1007/978-3-031-62110-9_16" target="_blank" rel="noopener" title="Full text (DOI)">📄</a></p></div></div>
+    <div class="pub"><div class="pub-year">2024</div><div><p class="pub-title">Rethinking Recruitment Processes through Human-centric Chatbot Design for Sustainable Workplaces</p><p class="pub-venue">IFIP WG 13.6 Human Work Interaction Design (HWID 2024), Milan, Italy · <a href="https://www.dropbox.com/scl/fi/vaqeviqjuv7pyhfzbtzga/Akram-HWID-Presentation-24.mp4?rlkey=us46ty7ck7j90tkvsvbqlsbaj&amp;st=6fjzmlis&amp;dl=0" target="_blank" rel="noopener" title="Conference presentation (video)">🎥</a></p></div></div>
+    <div class="pub"><div class="pub-year">2023</div><div><p class="pub-title">Recruitment chatbot acceptance in company practices: an elicitation study</p><p class="pub-venue">15th Biannual Conference of the Italian SIGCHI Chapter (CHItaly 2023) · <a href="https://doi.org/10.1145/3605390.3605420" target="_blank" rel="noopener" title="Full text (DOI)">📄</a></p></div></div>
+    <div class="pub"><div class="pub-year">2025</div><div><p class="pub-title">Survey on the Multifaceted Impacts of AI in Recruitment: Ethical and Human-Centered Dimensions</p><p class="pub-venue">Under review (2nd round), IJHCS Special Issue on User Perspectives in HCAI</p></div></div>
+    <div class="pub"><div class="pub-year">2026</div><div><p class="pub-title">Enhancing e-Learning with AI and Blockchain: A Predictive Analysis of Acceptance Factors and Academic Performance</p><p class="pub-venue">International Journal of Innovation in Science and Technology, vol. 8(3), pp. 232–257 · <a href="https://ideas.repec.org/a/abq/ijist1/v8y2026i3p232-257.html" target="_blank" rel="noopener" title="Full text">📄</a></p></div></div>
+    <div class="pub"><div class="pub-year">2024</div><div><p class="pub-title">DIAFM: An Improved and Novel Approach for Incremental Frequent Itemset Mining</p><p class="pub-venue">Mathematics, MDPI, vol. 12(24), 3930 · <a href="https://doi.org/10.3390/math12243930" target="_blank" rel="noopener" title="Full text (DOI)">📄</a></p></div></div>
+    <div class="pub"><div class="pub-year">2022</div><div><p class="pub-title">Open-source Electronic Health Record Systems: A Systematic Review of Most Recent Advances</p><p class="pub-venue">Health Informatics Journal, vol. 28(2) · <a href="https://doi.org/10.1177/14604582221099828" target="_blank" rel="noopener" title="Full text (DOI)">📄</a></p></div></div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects">
+  <div class="wrap">
+    <h2>Research Systems &amp; Interactive Prototypes</h2>
+    <div class="proj-grid">
+      <div class="proj-card">
+        <div class="proj-tag">Research Model</div>
+        <h3>HC-TAM</h3>
+        <p>Extends TAM with trust, transparency, personalization, and fairness constructs for AI-mediated systems — validated via PLS-SEM and qualitative coding.</p>
+        <div class="proj-links"><a href="https://doi.org/10.1007/s00779-024-01826-4" target="_blank" rel="noopener" title="Full paper (PUC 2024)">📄</a></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-tag">Conversational AI</div>
+        <h3>RecoBot</h3>
+        <p>Trustworthy conversational recruitment interface with explainable dialogue flows — validated via task-based usability testing and acceptance analysis.</p>
+        <div class="proj-links"><a href="https://doi.org/10.1007/978-3-031-62110-9_16" target="_blank" rel="noopener" title="Full paper (HCII 2024)">📄</a></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-tag">Clinical AI</div>
+        <h3>GenDAI</h3>
+        <p>Evaluated explainability, accessibility, and interaction design for genomic clinical decision-support — Marie Skłodowska-Curie exchange with InContech, Germany.</p>
+        <div class="proj-links"><a href="https://project-gendai.eu/imprint/" target="_blank" rel="noopener" title="Project site">🔗</a></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-tag">Industry Workshop</div>
+        <h3>Keiretsu Design Sprint</h3>
+        <p>Translated HCAI principles into Keiretsu's recruitment platform, leading design-oriented knowledge transfer with the developer team.</p>
+        <div class="proj-links"><a href="https://www.experis.it/it/insights/articoli/2022/keiretzu" target="_blank" rel="noopener" title="Project overview">🔗</a></div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-tag">UX Research</div>
+        <h3>FAST Mentor App</h3>
+        <p>UX case study for peer mentoring and onboarding — persona modeling, journey mapping, wireframing, and usability evaluation.</p>
+        <div class="proj-links"><a href="#prototypes" title="Live prototype">🔗</a> <a href="https://www.dropbox.com/scl/fi/c3d7aiv2ri75ojagfctxi/UXE-FAST-Mentor-App.pdf?rlkey=pm00hexiy5cpumjrujljr33wz&amp;st=iv8gq1ok&amp;dl=0" target="_blank" rel="noopener" title="UX case study (PDF)">📄</a></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROTOTYPES -->
+<section id="prototypes">
+  <div class="wrap">
+    <h2>Interactive Demo Lab</h2>
+    <p class="demos-sub">Hands-on demonstrations linked with the research systems above. These prototypes make the interaction logic visible instead of only describing the project.</p>
+
+    <div class="demo" id="demo-elearning">
+      <div class="demo-tag">Education · Hybrid SEM-ANN</div>
+      <div class="demo-title">eLearning Acceptance &amp; Performance Predictor</div>
+      <p class="demo-desc">This interactive prototype demonstrates how human-centered acceptance factors influence trust, usability perception, and predicted engagement outcomes in AI-assisted educational environments. The model combines SEM-derived factor relationships with ANN-inspired predictive mapping to simulate non-linear behavioral acceptance dynamics.</p>
+      <div class="demo-grid">
+        <div class="demo-box">
+          <div class="demo-lbl">SCENARIO</div>
+          <div class="demo-chiprow" id="edPresets"></div>
+          <div id="edSliders"></div>
+          <div class="demo-lbl" style="margin-top:6px">SEM PATHS</div>
+          <div id="edPaths"></div>
+        </div>
+        <div class="demo-box">
+          <div class="ed-scorewrap">
+            <div class="ed-gauge">
+              <svg width="110" height="110" style="transform:rotate(-90deg)"><circle cx="55" cy="55" r="46" fill="none" stroke="#31415a" stroke-width="10"/><circle id="edGauge" cx="55" cy="55" r="46" fill="none" stroke="#c9a668" stroke-width="10" stroke-linecap="round" stroke-dasharray="289" stroke-dashoffset="289" style="transition:stroke-dashoffset .5s"/></svg>
+              <div class="ed-gnum"><span id="edAcc">0</span><small>acceptance</small></div>
+            </div>
+            <div>
+              <div class="ed-band" id="edBand"></div>
+              <div class="ed-perf-lbl">predicted performance</div>
+              <div class="ed-perfbar"><div id="edPerfFill"></div></div>
+              <div class="demo-val" id="edPerfTxt"></div>
+            </div>
+          </div>
+          <div class="demo-cardt">FACTOR CONTRIBUTIONS</div>
+          <div id="edContribs"></div>
+        </div>
+      </div>
+    </div>
+
+    <script>
+    (function(){
+      var LB={pu:"Perceived Usefulness",peou:"Perceived Ease of Use",quality:"Educational Quality",usability:"Usability"};
+      var W={pu:0.40,usability:0.28,quality:0.20,peou:0.12};
+      var P={"High-quality LMS":{pu:85,peou:78,quality:82,usability:80},"Feature-rich but clunky":{pu:80,peou:40,quality:70,usability:38},"Basic tool":{pu:45,peou:60,quality:42,usability:55}};
+      var PATHS=[["PU → Acceptance","p < 0.001",true],["Usability → Satisfaction","p < 0.01",true],["Quality → Satisfaction","p < 0.001",true],["PEOU → Acceptance","n.s.",false]];
+      var order=["pu","peou","quality","usability"];
+      var f=Object.assign({},P["High-quality LMS"]);
+      function band(v){ if(v>=75)return["High acceptance","#7fd9b6"]; if(v>=55)return["Moderate acceptance","#c9a668"]; if(v>=40)return["Low acceptance","#e0b45a"]; return["At-risk adoption","#e07a7a"]; }
+      function render(){
+        var acc=0,c=[];
+        order.forEach(function(k){ acc+=W[k]*f[k]; c.push({l:LB[k],s:W[k]*(f[k]-50)}); });
+        acc=Math.round(acc);
+        c.sort(function(a,b){return Math.abs(b.s)-Math.abs(a.s);});
+        var perf=Math.round(100/(1+Math.exp(-0.09*(acc-50))));
+        var b=band(acc);
+        document.getElementById('edAcc').textContent=acc;
+        var g=document.getElementById('edGauge'); g.setAttribute('stroke',b[1]); g.setAttribute('stroke-dashoffset',(289-289*acc/100));
+        var bd=document.getElementById('edBand'); bd.textContent=b[0]; bd.style.color=b[1];
+        document.getElementById('edPerfFill').style.width=perf+'%';
+        document.getElementById('edPerfTxt').textContent=perf+'/100';
+        var ch='';
+        c.forEach(function(x){ var pos=x.s>=0,w=Math.min(50,Math.abs(x.s)*2.2); ch+='<div class="ed-crow"><div class="ed-clbl"><span>'+x.l+'</span><span style="color:'+(pos?'#7fd9b6':'#e07a7a')+'">'+(pos?'+':'')+x.s.toFixed(1)+'</span></div><div class="ed-track"><div class="ed-mid"></div><div class="ed-fill" style="width:'+w+'%;'+(pos?'left:50%;background:#7fd9b6':'right:50%;background:#e07a7a')+'"></div></div></div>'; });
+        document.getElementById('edContribs').innerHTML=ch;
+      }
+      var sl=''; order.forEach(function(k){ sl+='<div class="demo-slider"><div class="r"><span>'+LB[k]+'</span><span class="demo-val" id="edv-'+k+'">'+f[k]+'</span></div><input type="range" min="0" max="100" value="'+f[k]+'" data-k="'+k+'"></div>'; });
+      document.getElementById('edSliders').innerHTML=sl;
+      document.getElementById('edSliders').addEventListener('input',function(e){ var k=e.target.getAttribute('data-k'); if(!k)return; f[k]=+e.target.value; document.getElementById('edv-'+k).textContent=f[k]; render(); });
+      var ph=''; Object.keys(P).forEach(function(p){ ph+='<button type="button" class="demo-chip" data-p="'+p+'">'+p+'</button>'; });
+      document.getElementById('edPresets').innerHTML=ph;
+      document.getElementById('edPresets').addEventListener('click',function(e){ var p=e.target.getAttribute('data-p'); if(!p)return; f=Object.assign({},P[p]); order.forEach(function(k){ document.querySelector('#edSliders input[data-k="'+k+'"]').value=f[k]; document.getElementById('edv-'+k).textContent=f[k]; }); render(); });
+      var pa=''; PATHS.forEach(function(x){ pa+='<div class="ed-path"><span>'+x[0]+'</span><span class="ed-p'+(x[2]?' sig':'')+'">'+x[1]+'</span></div>'; });
+      document.getElementById('edPaths').innerHTML=pa;
+      render();
+    })();
+    </script>
+
+    <div class="demo" id="demo-fastmentor">
+      <div class="demo-tag">UX Research · Design-Thinking Prototype</div>
+      <div class="demo-title">FAST Mentor App</div>
+      <p class="demo-desc">A UX research prototype for FAST-NUCES student mentoring. The flow translates personas, journey maps, wireframes, and usability insights into a mobile interaction model for mentor discovery, academic resources, and chat-based peer guidance.</p>
+      <div class="fm-frame">
+        <div class="fm-status"></div>
+        <div class="fm-body" id="fmBody"></div>
+        <div class="fm-nav">
+          <button type="button" class="fm-navbtn active" data-tab="home">🏠<span>Home</span></button>
+          <button type="button" class="fm-navbtn" data-tab="courses">📚<span>Courses</span></button>
+          <button type="button" class="fm-navbtn" data-tab="mentors">👥<span>Mentors</span></button>
+          <button type="button" class="fm-navbtn" data-tab="chat">💬<span>Chat</span></button>
+        </div>
+      </div>
+      <p class="fm-hint">Tap Mentors → Connect → type a message → Send</p>
+    </div>
+
+    <script>
+    (function(){
+      var mentors=[
+        {id:1,name:"Ibrahim K.",batch:"MS CS · Final year",tags:["Algorithms","Thesis"],color:"#486581",reply:"Sure! For your thesis, start by narrowing your research question. Want me to share a template?"},
+        {id:2,name:"Daniya R.",batch:"MS DS · 3rd sem",tags:["Data Science","Electives"],color:"#557a95",reply:"Happy to help with elective selection — which domain are you leaning toward?"},
+        {id:3,name:"Anaya S.",batch:"MS SE · Final year",tags:["Research","Proposals"],color:"#627d98",reply:"For the proposal defense, focus on the gap and your contribution. I can review your draft."},
+        {id:4,name:"Bilal A.",batch:"MS CNS · 4th sem",tags:["Networks","Internships"],color:"#9c7a3c",reply:"There are two internships open right now — I can guide you on the applications."}
+      ];
+      var events=[["HCI Guest Lecture","Fri · 3:00 PM · Auditorium"],["Research Proposal Workshop","Mon · 11:00 AM · Lab 4"]];
+      var internships=[["UX Research Intern","Systems Ltd · Islamabad"],["ML Engineering Intern","Afiniti · Remote"]];
+      var resources=[["HCI — Lecture Notes (Wk 1-6)","PDF · 4.2 MB"],["Advanced Algorithms — Past Papers","PDF · 2.1 MB"],["Thesis Proposal Template","DOCX · 380 KB"]];
+      var tab="home", active=null, msgs=[];
+      var body=document.getElementById('fmBody');
+      function esc(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;'); }
+      function renderChatOnly(){
+        var cb=document.getElementById('fmChatBody'); if(!cb) return;
+        var h=''; msgs.forEach(function(m){ h+='<div class="fm-bubble '+(m.from==='me'?'me':'them')+'">'+esc(m.text)+'</div>'; });
+        cb.innerHTML=h; cb.scrollTop=cb.scrollHeight;
+      }
+      function render(){
+        document.querySelectorAll('#demo-fastmentor .fm-navbtn').forEach(function(b){ b.classList.toggle('active', b.getAttribute('data-tab')===tab); });
+        if(tab==='home'){
+          var h='<div class="fm-hero"><small>Welcome back,</small><h4>Junior @ FAST-NUCES 👋</h4><div class="fm-search">🔍 Find a mentor or resource…</div></div><div class="fm-sec"><div class="fm-sec-t">📅 Upcoming events</div>';
+          events.forEach(function(e){ h+='<div class="fm-card"><p>'+e[0]+'</p><span>'+e[1]+'</span></div>'; });
+          h+='<div class="fm-sec-t" style="margin-top:12px">💼 Internships</div>';
+          internships.forEach(function(e){ h+='<div class="fm-card"><p>'+e[0]+'</p><span>'+e[1]+'</span></div>'; });
+          h+='</div>';
+          body.innerHTML=h;
+        } else if(tab==='courses'){
+          var h='<div class="fm-sec"><div class="fm-sec-t" style="font-size:13px">🎓 Courses &amp; Resources</div><p style="font-size:10.5px;color:#64748b;margin:-4px 0 10px">MS Computer Science · shared by seniors</p>';
+          resources.forEach(function(r){ h+='<div class="fm-card" style="display:flex;justify-content:space-between;align-items:center"><div><p>'+r[0]+'</p><span>'+r[1]+'</span></div><span style="font-size:15px">⬇</span></div>'; });
+          h+='</div>';
+          body.innerHTML=h;
+        } else if(tab==='mentors'){
+          var h='<div class="fm-sec"><div class="fm-sec-t" style="font-size:13px">👥 Find a Mentor</div><p style="font-size:10.5px;color:#64748b;margin:-4px 0 10px">Senior students ready to help</p>';
+          mentors.forEach(function(m){
+            h+='<div class="fm-card"><div class="fm-mentor"><div class="fm-avatar" style="background:'+m.color+'">'+m.name[0]+'</div><div><p>'+m.name+'</p><span>'+m.batch+'</span></div></div><div class="fm-tags">';
+            m.tags.forEach(function(t){ h+='<span class="fm-tag">'+t+'</span>'; });
+            h+='</div><button type="button" class="fm-btn" data-connect="'+m.id+'">Connect</button></div>';
+          });
+          h+='</div>';
+          body.innerHTML=h;
+          body.querySelectorAll('[data-connect]').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              var id=+btn.getAttribute('data-connect');
+              active=mentors.filter(function(m){ return m.id===id; })[0];
+              msgs=[{from:'them',text:"Hi! I'm "+active.name.split(' ')[0]+". How can I help you today?"}];
+              tab='chat'; render();
+            });
+          });
+        } else if(tab==='chat'){
+          if(!active){
+            body.innerHTML='<div class="fm-empty">💬<p style="margin-top:8px;font-size:12px">No conversation yet.</p><button type="button" class="fm-btn" style="width:auto;padding:6px 16px;margin-top:8px" id="fmFindBtn">Find a mentor →</button></div>';
+            var fb=document.getElementById('fmFindBtn'); if(fb) fb.addEventListener('click', function(){ tab='mentors'; render(); });
+          } else {
+            var h='<div class="fm-chatwrap"><div class="fm-chathead"><button type="button" id="fmBack" style="background:none;border:none;font-size:15px;cursor:pointer">←</button><div class="fm-avatar" style="width:26px;height:26px;font-size:11px;background:'+active.color+'">'+active.name[0]+'</div><div><p style="font-size:12px;font-weight:600;margin:0">'+active.name+'</p><span style="font-size:9px;color:#10b981">● online</span></div></div><div class="fm-chatbody" id="fmChatBody">';
+            msgs.forEach(function(m){ h+='<div class="fm-bubble '+(m.from==='me'?'me':'them')+'">'+esc(m.text)+'</div>'; });
+            h+='</div><div class="fm-inputrow"><input id="fmInput" placeholder="Type a message…"><button type="button" class="fm-send" id="fmSend">➤</button></div></div>';
+            body.innerHTML=h;
+            document.getElementById('fmBack').addEventListener('click', function(){ tab='mentors'; render(); });
+            var input=document.getElementById('fmInput');
+            function send(){
+              var v=input.value.trim(); if(!v) return;
+              msgs.push({from:'me',text:v}); input.value='';
+              renderChatOnly();
+              setTimeout(function(){ msgs.push({from:'them',text:active.reply}); renderChatOnly(); }, 500);
+            }
+            document.getElementById('fmSend').addEventListener('click', send);
+            input.addEventListener('keydown', function(e){ if(e.key==='Enter') send(); });
+            var cb=document.getElementById('fmChatBody'); cb.scrollTop=cb.scrollHeight;
+          }
+        }
+      }
+      document.querySelectorAll('#demo-fastmentor .fm-navbtn').forEach(function(b){ b.addEventListener('click', function(){ tab=b.getAttribute('data-tab'); render(); }); });
+      render();
+    })();
+    </script>
+  </div>
+</section>
+
+<!-- TALKS & CONFERENCES -->
+<section id="talks">
+  <div class="wrap">
+    <h2>Talks &amp; Conferences</h2>
+    <div class="talk-grid">
+      <div class="talk-card">
+        <h3>CHItaly 2023</h3>
+        <div class="talk-meta">15th Biannual Conference of the Italian SIGCHI Chapter · Turin, Italy · Sep 2023</div>
+        <p class="desc">Short paper and Doctoral Consortium poster presentation.</p>
+        <div class="talk-links">
+          <a href="https://www.dropbox.com/scl/fi/jcht133qfloklbmk55vcb/chitaly-paper-ppt.pdf?rlkey=chfl2z28fp2ucnfaxhp5ap8ba&amp;st=4rudsiig&amp;dl=0" target="_blank" rel="noopener" title="Paper slides">🖥️</a>
+          <a href="https://www.dropbox.com/scl/fi/x436e3u934kmol8ctav0s/CHItaly-DC-Poster.pptx?rlkey=exst1by51z1gtg0eqv4df8n30&amp;st=8uypio5d&amp;dl=0" target="_blank" rel="noopener" title="DC poster (CEUR-WS)">🖼️</a>
+        </div>
+      </div>
+      <div class="talk-card">
+        <h3>INTERACT 2023</h3>
+        <div class="talk-meta">19th IFIP TC-13 Conference on HCI · York, UK · Aug–Sep 2023</div>
+        <p class="desc">Doctoral Consortium presentation; student volunteer.</p>
+        <div class="talk-links">
+          <a href="https://www.dropbox.com/scl/fi/2rztivb6zov5dsahpd3i4/INTERACT-2023-Visa-Invitation-letter-Sabrina.pdf?rlkey=swllhzobdf6t5ia51i8oocfud&amp;st=ig8ysjok&amp;dl=0" target="_blank" rel="noopener" title="DC acceptance letter">📩</a>
+          <a href="https://www.dropbox.com/scl/fi/xuh8o8fqbhnz9nbwqr44u/Sabina_Akram_Letter_of_Attendance-interact24.pdf?rlkey=355rtwncgdmng9r75ge04j84c&amp;st=0nuh5yom&amp;dl=0" target="_blank" rel="noopener" title="Certificate of attendance">📜</a>
+        </div>
+      </div>
+      <div class="talk-card">
+        <h3>AFIRM CHI 22</h3>
+        <div class="talk-meta">Franco-Italian Young Researcher Meetup · Padova, Italy · Aug 2022</div>
+        <p class="desc">30-hour research training programme (≈1 ECTS), funded by the University of Padova.</p>
+        <div class="talk-links">
+          <a href="https://www.dropbox.com/scl/fi/uz4gmupc0hanep1xgr3na/AFIRM-CHI22-certificate-of-attendance-Akram.pdf?rlkey=t0py4s0n18pwc53ar5edis6iz&amp;st=ah5ec2wn&amp;dl=0" target="_blank" rel="noopener" title="Certificate of participation">📜</a>
+        </div>
+      </div>
+      <div class="talk-card">
+        <h3>HCI International 2024</h3>
+        <div class="talk-meta">26th International Conference on HCI · Washington DC, USA · Jun–Jul 2024</div>
+        <p class="desc">Poster presentation of RecoBot.</p>
+        <div class="talk-links">
+          <a href="https://www.dropbox.com/scl/fi/olfjifq2tiwvbar3nrgtr/Certificate_of_presentation_HCII244815.pdf?rlkey=phdw2tnnk8c28ouk043eiqspi&amp;st=qs5dcu6y&amp;dl=0" target="_blank" rel="noopener" title="Certificate of presentation">📜</a>
+          <a href="https://www.dropbox.com/scl/fi/nml64ec49m4m1ty8l8l9i/HCII2024_Participation_Certificate-HCII24_4815.pdf?rlkey=h7z4bv5ti1n2ra4hq4riqd57z&amp;st=6ooevb0b&amp;dl=0" target="_blank" rel="noopener" title="Certificate of participation">📜</a>
+        </div>
+      </div>
+      <div class="talk-card">
+        <h3>EuroVis 2022</h3>
+        <div class="talk-meta">24th EG Conference on Visualization · Rome, Italy · Jun 2022</div>
+        <p class="desc">Attendee; student volunteer.</p>
+        <div class="talk-links">
+          <a href="https://www.dropbox.com/scl/fi/0m6d5wo7i3a9avbimx965/EuroVis2022-AttendanceCertificate.pdf?rlkey=kfe1gx7cumkh2rt87bkei25sa&amp;st=37qin089&amp;dl=0" target="_blank" rel="noopener" title="Certificate of attendance">📜</a>
+        </div>
+      </div>
+      <div class="talk-card">
+        <h3>Ethics and AI (SIpEIA)</h3>
+        <div class="talk-meta">Italian Society for Ethics of AI · Online · 2023</div>
+        <p class="desc">Advanced training in AI ethics, algorithmic bias mitigation, trustworthy AI governance, and regulatory frameworks for responsible AI deployment.</p>
+        <div class="talk-links">
+          <a href="https://www.dropbox.com/scl/fi/04fnabmafrzcjzbj89da8/Screenshot_20260702_114257_Outlook.jpg?rlkey=34tdi6uw8qfonpmi7r0xyfyir&amp;st=nhgyb6jn&amp;dl=0" target="_blank" rel="noopener" title="Certificate of completion">📜</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICE -->
+<section id="service">
+  <div class="wrap">
+    <h2>Service &amp; Outreach</h2>
+    <div class="prose">
+      <p><b>Peer review</b> — IEEE Access, Personal and Ubiquitous Computing, Behaviour &amp; Information Technology, Advances in HCI, International Journal of Computer Games Technology; CHItaly 2023, INTERACT 2023, CHIplay 2023, CUI 2024, NordiCHI 2024.</p>
+      <p><b>Guest lectures</b> — Invited seminars on Human-Centered AI, TAM, and ethical AI design at QUEST Nawabshah.</p>
+      <p><b>Conference operations</b> — Technical session coordination for international hybrid HCI/AI conferences (2022–2024).</p>
+    </div>
+  </div>
+</section>
+
+<footer id="contact">
+  <div class="wrap">
+    <h2>Contact</h2>
+    <p>Open to postdoctoral opportunities in HCI/UX research and Human-Centered AI.</p>
+    <div class="foot-links">
+      <a class="icon-link" href="mailto:sabina.akram93@gmail.com" aria-label="Email" title="Email"><svg viewBox="0 0 24 24"><path d="M2 4h20v16H2V4zm2 2.4V6h.01L12 12l7.99-6H4v.4zM4 8.24V18h16V8.24l-7.4 5.55a1 1 0 01-1.2 0L4 8.24z"/></svg></a>
+      <a class="icon-link" href="https://www.linkedin.com/in/sabina-akram-4a81a82b5/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.45 20.45h-3.56v-5.57c0-1.33-.02-3.04-1.85-3.04-1.85 0-2.14 1.45-2.14 2.94v5.67H9.34V9h3.41v1.56h.05c.48-.9 1.64-1.85 3.38-1.85 3.61 0 4.28 2.38 4.28 5.47v6.27zM5.34 7.43a2.07 2.07 0 11.02-4.14 2.07 2.07 0 01-.02 4.14zM7.12 20.45H3.56V9h3.56v11.45z"/></svg></a>
+      <a class="icon-link" href="https://scholar.google.it/citations?user=oQLPmzQAAAAJ&amp;hl=en" target="_blank" rel="noopener" aria-label="Google Scholar" title="Google Scholar"><svg viewBox="0 0 24 24"><path d="M12 3L1 9l11 6 9-4.91V17h2V9L12 3zm0 13.5L4.5 12.5V15.5c0 2.21 3.36 4 7.5 4s7.5-1.79 7.5-4v-3l-7.5 4z"/></svg></a>
+      <a class="icon-link" href="https://www.dropbox.com/scl/fi/iunfyuym7qgq5c319oc7s/Sabina_Akram_CV2026.pdf?rlkey=mj0akbofarl5u62cxw3u5yzgs&amp;st=3i12pxtq&amp;dl=0" target="_blank" rel="noopener" aria-label="CV (PDF)" title="CV (PDF)"><svg viewBox="0 0 24 24"><path d="M6 2h9l5 5v15H6V2zm8 1.5V8h4.5L14 3.5zM8 13h8v1.6H8V13zm0 3.2h8v1.6H8v-1.6zM8 9.8h4v1.6H8V9.8z"/></svg></a>
+    </div>
+    <div class="foot-note">Bari, Italy · © Sabina Akram</div>
+  </div>
+</footer>
+
+</body>
+</html>
